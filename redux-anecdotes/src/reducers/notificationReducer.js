@@ -1,19 +1,19 @@
-const notificationReducer = (state, action) => {
+const notificationReducer = (state='', action) => {
     switch (action.type) {
       case 'SET_NOTIFICATION':
-          const id = action.data.id
-          const anecdote = state.find(a => a.id === id)
-        return `you voted ${anecdote}`
+        return action.data
       default:
         return state
     }
   }
   
   export const notificationChange = (notification) => {
-    return {
-      type: 'SET_NOTIFICATION',
-      notification,
-    }
+    return ({
+        type: 'SET_NOTIFICATION',
+        data: notification
+      })
+      
   }
+  
 
 export default notificationReducer

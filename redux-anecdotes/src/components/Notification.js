@@ -1,9 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { notificationChange } from '../reducers/notificationReducer'
 
 const Notification = () => {
-  const notification = useSelector(state => state.notification)
+  const notification= useSelector(state => state.notification)
   console.log(notification)
+
+  if (notification === '' || notification === undefined) {
+    return null
+  }
   
   const style = {
     border: 'solid',
