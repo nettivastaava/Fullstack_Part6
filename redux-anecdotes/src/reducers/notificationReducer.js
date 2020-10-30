@@ -1,3 +1,5 @@
+let time
+
 const notificationReducer = (state='', action) => {
     switch (action.type) {
       case 'SET_NOTIFICATION':
@@ -9,11 +11,14 @@ const notificationReducer = (state='', action) => {
   
   export const notificationChange = (notification) => {
     return async dispatch => {
+      if(time) {
+        clearTimeout(time)
+      }
       dispatch({
         type: 'SET_NOTIFICATION',
         data: notification
       })
-      setTimeout(() => {
+      time = setTimeout(() => {
         dispatch(notificationChange(''))
       }, 5000)
     }
